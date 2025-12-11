@@ -18,9 +18,19 @@
     </script>
     <script>
          async function showTodo() {
-            let response
-            
+            let response =await fetch("https://jsonplaceholder.typicode.com/todos");
+            let data= await response.json
+            data.forEach((todo)=>{
+                let div=document.createElement("li");
+                let p=document.createElement("p");
+                p.textContent=todo.title
+                div.appendChild(p)
+                let todolist=document.getElementById("todolist")
+                todolist.appendChild(div);
+
+            })
          }
+         showTodo()
     </script>
 </body>
 </html>
