@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-</head>
-<body>
+  </head>
+  <body>
     <div>
-        <div id="navbar"></div>
-        <input id="email" placeholder="email"><br><br>
-        <input id="password" placeholder="password"><br><br>
-        <button id="Login-btn">Login</button>
-        <div id="footer"></div>
+      <div id="navbar"></div>
+      <input id="email" placeholder="email" /><br /><br />
+      <input id="password" placeholder="password" /><br /><br />
+      <button id="Login-btn">Login</button>
+      <div id="footer"></div>
     </div>
     <script type="module">
-           import {navbar} from "../component/navbar.js";
-           import {footer} from "../component/footer.js";
-           document.getElementById("navbar").innerHTML=navbar();
-           document.getElementById("footer").innerHTML=footer();
-        </script>
-        <script>
-            let users =JSON.parse
-        </script>
-        
-
-    
-</body>
+      import { navbar } from "../component/navbar.js";
+      import { footer } from "../component/footer.js";
+      document.getElementById("navbar").innerHTML = navbar();
+      document.getElementById("footer").innerHTML = footer();
+    </script>
+    <script>
+      let users = JSON.parse(localStorage.getElementById("users")) ?? [];
+      document
+        .getElementById("Login-btn")
+        .addEventListener("click", function login(e) {
+          e.preventDefault();
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          if (!email && !password) {
+            alert("please fill the email and password");
+          } else if (!email) {
+            alert("please fill the email");
+          } else if (!password) {
+            alert("please fill the password");
+          } else {
+            let userFound = users.find(
+              (user) => user.email === email && password === password
+            );
+            if (userFound) {
+              alert("Login Successful");
+              window.location = "./todos.html";
+            } else {
+              alert("please enter correct credentials");
+            }
+          }
+        });
+    </script>
+  </body>
 </html>
