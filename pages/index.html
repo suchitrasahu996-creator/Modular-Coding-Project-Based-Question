@@ -10,10 +10,10 @@
     <h1>Welcome to Modular Project</h1>
     <div id="footer"></div>
     <script type="module">
-        import {navbar} from "./component/navbar.js";
-        import {footer} from "./component/footer.js";
+        import {navbar} from "../component/navbar.js";
+        import {footer} from "../component/footer.js";
 
-        document.getElementById("navbar").innerHtml=navbar();
+        document.getElementById("navbar").innerHTML=navbar();
         document.getElementById("footer").innerHTML=footer();
     </script>
     
