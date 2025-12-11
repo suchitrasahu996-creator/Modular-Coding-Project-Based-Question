@@ -6,12 +6,15 @@
     <title>Signup</title>
 </head>
 <body>
+    <div>
+    <div id="navbar"></div>
     <div id="name" placeholder="Name"><br><br>
         <input id="email" placeholder="Email"><br><br>
         <input id="password" placeholder="password" type="password"><br><br>
-        <button  onclick="signup"id="signup-btn">Signup</button>
+        <button id="signup-btn">Signup</button>
 
         <div id="footer"></div>
+        </div>
         <script type="module">
            import {navbar} from "../component/navbar.js";
            import {footer} from "../component/footer.js";
@@ -19,7 +22,7 @@
            document.getElementById("footer").innerHTML=footer();
         </script>
         <script>
-            let user=JSON.parse(localstorage.getElementById("users"))??[];
+            let users=JSON.parse(localstorage.getItem("users")) ?? [];
             document.getElementById("signup-btn").addEventListener('click',function singup(e){
                 e.preventDefault();
                 const name=document.getElementById("name").value;
@@ -27,14 +30,14 @@
                 const password=document.getElementById("password").value;
 
                 if(name && email  && password){
-                    let user ={
-                        name:name;
-                        email:email;
-                        password:password;
+                    let user = {
+                        name:name,
+                        email:email,
+                        password:password
                     }
-                    user.push(user)
+                    users.push(user)
                     localStorage.setItem("users",JSON.stringify(users));
-                    alert("Sign successful!!!!")
+                    alert("Signup successful!!!!")
                 }
             })
         </script>
