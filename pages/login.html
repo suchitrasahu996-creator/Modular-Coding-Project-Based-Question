@@ -20,7 +20,7 @@
       document.getElementById("footer").innerHTML = footer();
     </script>
     <script>
-      let users = JSON.parse(localStorage.getElementById("users")) ?? [];
+      let users = JSON.parse(localStorage.getItem("users")) ?? [];
       document
         .getElementById("Login-btn")
         .addEventListener("click", function login(e) {
